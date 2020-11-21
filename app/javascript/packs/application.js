@@ -10,7 +10,7 @@ require('jquery')
 require('datatables.net-bs4')
 
 import 'bootstrap/dist/js/bootstrap';
-import $ from 'jquery';
+// import $ from 'jquery';
 global.$ = jQuery;
 
 $(document).ready(function() {
