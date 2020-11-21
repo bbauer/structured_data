@@ -11,6 +11,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class='wrapper'>
+      <%#= render 'layouts/sidebar' %>
+
+      <div class='main-content'>
+        <%= render 'layouts/app_header' %>
+
+        <div class='container-fluid'>
+          <% flash.each do |type, msg| %>
+            <div id='flash-message' class="alert alert-info center">
+              <%= msg %>
+            </div>
+          <% end %>
+
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
