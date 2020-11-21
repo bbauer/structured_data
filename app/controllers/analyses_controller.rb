@@ -1,30 +1,22 @@
 class AnalysesController < ApplicationController
   before_action :set_analysis, only: [:show, :edit, :update, :destroy]
 
-  # GET /analyses
-  # GET /analyses.json
   def index
     @analyses = Analysis.all
   end
 
-  # GET /analyses/1
-  # GET /analyses/1.json
   def show
   end
 
-  # GET /analyses/new
   def new
     @analysis = Analysis.new
   end
 
-  # GET /analyses/1/edit
   def edit
   end
 
-  # POST /analyses
-  # POST /analyses.json
   def create
-    @analysis = Analysis.new(analysis_params)
+    @analysis = Analyzer.new(analysis_params[:url]).run
 
     respond_to do |format|
       if @analysis.save
@@ -37,8 +29,6 @@ class AnalysesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /analyses/1
-  # PATCH/PUT /analyses/1.json
   def update
     respond_to do |format|
       if @analysis.update(analysis_params)
@@ -51,10 +41,9 @@ class AnalysesController < ApplicationController
     end
   end
 
-  # DELETE /analyses/1
-  # DELETE /analyses/1.json
   def destroy
     @analysis.destroy
+
     respond_to do |format|
       format.html { redirect_to analyses_url, notice: 'Analysis was successfully destroyed.' }
       format.json { head :no_content }
@@ -62,13 +51,12 @@ class AnalysesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_analysis
-      @analysis = Analysis.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def analysis_params
-      params.fetch(:analysis, {})
-    end
+  def set_analysis
+    @analysis = Analysis.find(params[:id])
+  end
+
+  def analysis_params
+    params.require(:analysis).permit(:url)
+  end
 end

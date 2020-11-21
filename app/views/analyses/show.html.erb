@@ -1,4 +1,39 @@
-<p id="notice"><%= notice %></p>
+<div id='audit'>
+  <div class='row'>
+    <div class='col-12'>
+      <div class='box scrape-status'>
+        <h1>
+          <%= @analysis.url %>
+        </h1>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_analysis_path(@analysis), class: 'btn-success' %> |
-<%= link_to 'Back', analyses_path, class: 'btn-info' %>
+  <div class='row datatable'>
+    <div class='col-12'>
+      <div class='box'>
+        <h2>
+          <span class='badge badge-info'><%= @analysis.schema_types.count %></span>
+          Data Types
+        </h2>
+
+        <table class='table table-striped'>
+          <tr>
+            <th>Type</th>
+            <th>Fields</th>
+          </tr>
+
+          <% @analysis.schema_types.all.each do |schema_type| %>
+            <tr>
+              <td><strong><%= schema_type.name %></strong></td>
+              <td class='json-output'>
+                <%= CodeRay.scan(JSON.pretty_generate(schema_type.fields), :json).div.html_safe %>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+

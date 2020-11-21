@@ -1,5 +1,14 @@
-<h1>New Analysis</h1>
+<div class="row">
+  <div class="col-12">
+    <div class='box'>
+      <div class='evaluation'>
+        <h1><span class='badge badge-purple'>Structured Data Test</h1>
 
-<%= render 'form', analysis: @analysis %>
-
-<%= link_to 'Back', analyses_path, class: 'btn-info' %>
+        <%= form_for :analysis, url: analyses_path, method: :post do |f|%>
+          <%= f.text_field(:url, placeholder: 'Enter URL', required: true, class: 'crawlit') %><br>
+          <%= f.submit('Start Analysis', class: 'btn btn-light') %>
+        <%end%>
+      </div>
+    </div>
+  </div>
+</div>
