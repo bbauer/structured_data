@@ -16,7 +16,6 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'font-awesome-rails'
 gem 'httparty'
-gem 'devise'
 gem 'mechanize'
 gem 'coderay'
 
