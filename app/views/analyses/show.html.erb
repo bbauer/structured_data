@@ -21,7 +21,15 @@
 
           <% @analysis.schema_types.all.each do |schema_type| %>
             <tr>
-              <td><strong><%= schema_type.name %></strong></td>
+              <td>
+                <strong><%= schema_type.name %></strong>
+                <% if schema_type.schema.present? %>
+                  <p>
+                  <%= link_to("#{schema_type.schema.url}", schema_type.schema.url) %><br>
+                    <%= schema_type.schema.comment.html_safe %>
+                  </p>
+                <% end %>
+              </td>
               <td class='fields'>
                 <div><%= CodeRay.scan(JSON.pretty_generate(schema_type.fields), :json).div.html_safe %></div>
               </td>

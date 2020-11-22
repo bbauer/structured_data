@@ -31,6 +31,7 @@ class Analyzer
   end
 
   def add_schema(schema)
-    @analysis.schema_types.create(name: schema['@type'], fields: schema)
+    new = @analysis.schema_types.create(name: schema['@type'], fields: schema)
+    new.associate
   end
 end
