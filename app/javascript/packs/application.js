@@ -14,5 +14,5 @@ import $ from 'jquery';
 global.$ = jQuery;
 
 $(document).ready( function () {
-  $('.datatable').DataTable();
+  $('.dtable').DataTable();
 } );

@@ -1,28 +1,22 @@
 <div id='audit'>
-  <div class='row'>
-    <div class='col-12'>
-      <div class='box'>
-        <h1>Schemas</h1>
-      </div>
-    </div>
-  </div>
-
   <div class='row datatable'>
     <div class='col-12'>
       <div class='box'>
-        <table class='table table-striped datatable'>
+        <h1>Schema Library</h1>
+
+        <table class='table table-striped dtable'>
           <thead>
             <tr>
               <th>Name</th>
               <th>URL</th>
-              <th>Comment</th>
+              <th>Description</th>
             </tr>
           </thead>
 
           <tbody>
             <% @schemas.each do |schema| %>
               <tr>
-                <td><%= schema.name %></td>
+                <td><%= link_to("#{schema.name}", schema) %></td>
                 <td><%= link_to("#{schema.url}", schema.url) %></td>
                 <td><%= schema.comment.html_safe %></td>
               </tr>

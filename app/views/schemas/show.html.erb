@@ -1,0 +1,14 @@
+<div id='audit'>
+  <div class='row'>
+    <div class='col-12'>
+      <div class='box'>
+        <h1><%= @schema.name %></h1>
+        <p><%= link_to("#{@schema.url}", @schema.url) %></p>
+        <div><%= @schema.comment.html_safe %></div>
+      </div>
+      <div class='box'>
+        <p><%= link_to("All Schemas", '/schemas') %></p>
+      </div>
+    </div>
+  </div>
+</div>

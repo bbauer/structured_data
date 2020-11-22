@@ -1,3 +1,21 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "analyses";
+@import "bootstrap/dist/css/bootstrap";
+
+#DataTables_Table_0_filter {
+  text-align: right;
+
+  input {
+    width: 400px;
+    padding: 10px;
+  }
+}
+
+.dataTables_length {
+  display: none;
+}
+
+.datatable .dtable {
+  margin-top: 0;
+}
