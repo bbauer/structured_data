@@ -1,5 +1,5 @@
 class Analyzer
-  attr_reader :url, :mechanize
+  SCRIPT_TYPE = 'script[type="application/ld+json"]'
 
   def initialize(url)
     @url       = url
@@ -15,34 +15,22 @@ class Analyzer
   private
 
   def create_analysis
-    @analysis = Analysis.create!(url: url)
+    @analysis = Analysis.create!(url: @url)
   end
 
   def create_schema_types
-    page.search('script[type="application/ld+json"]').each do |data_type|
-      types = JSON[data_type]
+    @mechanize.get(@url).search(SCRIPT_TYPE).each do |schema|
+      schemas = JSON[schema]
 
-      if types.kind_of?(Array)
-        types.each do |type|
-          if type.kind_of?(Array)
-            type.each do |ty|
-              add_type(ty)
-            end
-          else
-            add_type(type)
-          end
-        end
+      if schemas.kind_of?(Array)
+        schemas.each { |type| add_schema(type) }
       else
-        add_type(types)
+        add_schema(schemas)
       end
     end
   end
 
-  def add_type(type)
-    @analysis.schema_types.create(name: type['@type'], fields: type)
-  end
-
-  def page
-    @page ||= mechanize.get(url)
+  def add_schema(schema)
+    @analysis.schema_types.create(name: schema['@type'], fields: schema)
   end
 end

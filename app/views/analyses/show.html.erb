@@ -5,6 +5,7 @@
         <h1>
           <%= @analysis.url %>
         </h1>
+
       </div>
     </div>
   </div>
@@ -12,22 +13,17 @@
   <div class='row datatable'>
     <div class='col-12'>
       <div class='box'>
-        <h2>
-          <span class='badge badge-info'><%= @analysis.schema_types.count %></span>
-          Data Types
-        </h2>
-
         <table class='table table-striped'>
           <tr>
             <th>Type</th>
-            <th>Fields</th>
+            <th class='fields'>Fields</th>
           </tr>
 
           <% @analysis.schema_types.all.each do |schema_type| %>
             <tr>
               <td><strong><%= schema_type.name %></strong></td>
-              <td class='json-output'>
-                <%= CodeRay.scan(JSON.pretty_generate(schema_type.fields), :json).div.html_safe %>
+              <td class='fields'>
+                <div><%= CodeRay.scan(JSON.pretty_generate(schema_type.fields), :json).div.html_safe %></div>
               </td>
             </tr>
           <% end %>
