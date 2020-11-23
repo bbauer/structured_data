@@ -170,6 +170,19 @@ h1, h2, h3, h4, h5, h6 {
 .header-logo {
   float: left;
   position: relative;
+  top: 28px;
+  padding-left: 47px;
+
+  a {
+    font-size:20px;
+    color: #fff;
+    font-family: 'Questrial', sans-serif;
+  }
+
+  a:hover {
+    color: #ccc;
+    text-decoration:none;
+  }
 
   img {
     max-width: 138px;
@@ -180,12 +193,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-nav {
-  float: left;
+  float: right;
   margin-top: 27px;
   margin-left: 60px;
 
   a {
-    color: #aaa;
+    color: #959798;
     margin-right: 25px;
     font-size: 14px;
 
