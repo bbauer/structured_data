@@ -1,5 +1,5 @@
 class Analysis < ApplicationRecord
-  has_many :schema_types
+  has_many :schema_types, dependent: :destroy
   validates_presence_of :url
 
   def json_ld
