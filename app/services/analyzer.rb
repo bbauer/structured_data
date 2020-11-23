@@ -23,15 +23,28 @@ class Analyzer
       schemas = JSON[schema]
 
       if schemas.kind_of?(Array)
-        schemas.each { |type| add_schema(type) }
+        process(schemas)
+      elsif schemas['@graph'].present?
+        process(schemas['@graph'])
       else
         add_schema(schemas)
       end
     end
   end
 
+  def process(schemas)
+    schemas.each { |type| add_schema(type) }
+  end
+
   def add_schema(schema)
-    new = @analysis.schema_types.create(name: schema['@type'], fields: schema)
-    new.associate
+    schema_id = get_schema_id(schema)
+    new = @analysis.schema_types.create!(name: schema['@type'],
+                                         schema_id: schema_id,
+                                         fields: schema)
+  end
+
+  def get_schema_id(schema)
+    schema = Schema.where(name: schema['@type']).first
+    schema.id if schema.present?
   end
 end

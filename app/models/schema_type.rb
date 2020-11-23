@@ -8,7 +8,7 @@ class SchemaType < ApplicationRecord
     return if schema_id.present?
 
     if schema = Schema.where(name: name).first
-      update(schema_id: schema.id)
+      update!(schema_id: schema.id)
     end
   end
 end

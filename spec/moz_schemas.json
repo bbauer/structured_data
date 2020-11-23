@@ -1,0 +1,36 @@
+{
+  "@context"=>"http://schema.org",
+  "@graph"=> [
+    {
+      "@type"=>"WebPage",
+      "copyrightYear"=>"2019-06-06T10:10:00-07:00",
+      "dateModified"=>"2020-10-21T20:21:31-07:00",
+      "datePublished"=>"2019-06-06T10:10:00-07:00",
+      "description"=> "Backed by the largest community of SEOs on the planet, Moz builds tools that make SEO, inbound marketing, link building, and content marketing easy. Start your free 30-day trial today!",
+      "headline"=>"SEO Software for Smarter Marketing",
+      "url"=>"https://moz.com"
+    },
+    {
+      "@id"=>"#identity", 
+      "@type"=>"LocalBusiness", 
+      "priceRange"=>"$"
+    },
+    {
+      "@id"=>"#creator", 
+      "@type"=>"Organization"
+    },
+    {
+      "@type"=>"BreadcrumbList",
+      "description"=>"Breadcrumbs list",
+      "itemListElement"=>[
+        {
+          "@type"=>"ListItem",
+          "item"=>"https://moz.com/",
+          "name"=>"Homepage", 
+          "position"=>1
+        }
+      ],
+      "name"=>"Breadcrumbs"
+    }
+  ]
+}

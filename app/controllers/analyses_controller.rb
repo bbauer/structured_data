@@ -2,7 +2,7 @@ class AnalysesController < ApplicationController
   before_action :set_analysis, only: [:show, :edit, :update, :destroy]
 
   def index
-    @analyses = Analysis.all
+    @analyses = Analysis.order(created_at: :desc).limit(10).all
   end
 
   def show
@@ -23,7 +23,7 @@ class AnalysesController < ApplicationController
         format.html { redirect_to @analysis, notice: 'Analysis was successfully created.' }
         format.json { render :show, status: :created, location: @analysis }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'FAIL!!!' }
         format.json { render json: @analysis.errors, status: :unprocessable_entity }
       end
     end

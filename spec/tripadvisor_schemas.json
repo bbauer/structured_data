@@ -1,0 +1,26 @@
+[
+  {
+    "@context"=>"http://schema.org",
+    "@type"=>"Organization",
+    "name"=>"Tripadvisor",
+    "url"=>"https://www.tripadvisor.com/",
+    "logo"=>"https://static.tacdn.com/img2/brand_refresh/Tripadvisor_lockup_horizontal_secondary_registered.svg",
+    "sameAs"=> [
+      "https://www.facebook.com/TripAdvisor",
+      "https://twitter.com/TripAdvisor",
+      "https://plus.google.com/+TripAdvisor",
+      "https://instagram.com/TripAdvisor/",
+      "https://www.linkedin.com/company/tripadvisor"
+    ]
+  },
+ {
+   "@context"=>"http://schema.org",
+   "@type"=>"WebSite",
+   "url"=>"https://www.tripadvisor.com/",
+   "potentialAction"=> {
+     "@type"=>"SearchAction",
+     "target"=>"https://www.tripadvisor.com/Search?q={search_term_string}",
+     "query-input"=>"required name=search_term_string"
+   }
+ }
+]
