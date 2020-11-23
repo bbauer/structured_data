@@ -18,6 +18,7 @@ gem 'font-awesome-rails'
 gem 'httparty'
 gem 'mechanize'
 gem 'coderay'
+gem 'htmlbeautifier'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

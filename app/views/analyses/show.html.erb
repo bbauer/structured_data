@@ -3,9 +3,8 @@
     <div class='col-12'>
       <div class='box scrape-status'>
         <h1>
-          <%= @analysis.url %>
+          <span class='badge badge-purple'><%= @analysis.url %></span>
         </h1>
-
       </div>
     </div>
   </div>
@@ -13,14 +12,16 @@
   <div class='row datatable'>
     <div class='col-12'>
       <div class='box'>
+        <h2>Json</h2>
+
         <table class='table table-striped'>
           <tr>
-            <th>Type</th>
+            <th class='types'>Type</th>
             <th class='fields'>Fields</th>
           </tr>
 
-          <% @analysis.schema_types.all.each do |schema_type| %>
-            <tr>
+          <% @analysis.json_ld.all.each do |schema_type| %>
+            <tr class='types'>
               <td>
                 <strong><%= schema_type.name %></strong>
                 <% if schema_type.schema.present? %>
@@ -32,6 +33,40 @@
               </td>
               <td class='fields'>
                 <div><%= CodeRay.scan(JSON.pretty_generate(schema_type.fields), :json).div.html_safe %></div>
+              </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class='row datatable'>
+    <div class='col-12'>
+      <div class='box'>
+        <h2>Microdata</h2>
+
+        <table class='table table-striped'>
+          <tr>
+            <th class='types'>Type</th>
+            <th class='fields'>Fields</th>
+          </tr>
+
+          <% @analysis.microdata_grouped.each do |group| %>
+            <tr class='types'>
+              <td>
+                <strong><%= group[0] %> [<%= group[1].size %>]</strong>
+                <% if group[1].first.schema.present? %>
+                  <p>
+                    <%= link_to("#{group[1].first.schema.url}", group[1].first.schema.url) %><br>
+                    <%= group[1].first.schema.comment.html_safe %>
+                  </p>
+                <% end %>
+              </td>
+              <td class='fields'>
+                <% group[1].each do |schema_type| %>
+                  <div><%= CodeRay.scan(schema_type.pretty_fields, :html).div.html_safe %></div>
+                <% end %>
               </td>
             </tr>
           <% end %>
