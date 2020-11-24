@@ -23,8 +23,47 @@ table {
 
 .types {
   width: 300px;
+
+  .badge-purple {
+    padding: 4px;
+  }
 }
 
+.code-sample {
+}
+
+.field-data {
+  display: none;
+}
+
+.toggle {
+  padding: 6px 12px;
+  border-radius: 4px;
+  margin-bottom: 12px;
+  background-color: #f6f6f6;
+  cursor: pointer;
+  font-size: 15px;
+  color:#222;
+  text-align:center;
+  display: inline-block;
+
+  i {
+    font-size:20px;
+    color: #bbb;
+    top: 2px;
+    position: relative;
+    margin-right: 3px;
+  }
+}
+
+.toggle:hover {
+  background-color: #e6e6e6;
+
+}
+
+#audit .toggle .badge {
+  padding: 6px 8px;
+}
 
 .box .evaluation {
   text-align: center;

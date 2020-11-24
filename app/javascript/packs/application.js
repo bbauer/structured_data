@@ -15,4 +15,8 @@ global.$ = jQuery;
 
 $(document).ready( function () {
   $('.dtable').DataTable();
-} );
+
+  $(".toggle").on("click",function(){
+    $(this).prev().slideToggle();
+  });
+});
