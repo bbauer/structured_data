@@ -15,13 +15,14 @@ class Analyzer::Microdata
   private
 
   def add(schema)
-    name = schema.value.split('http://schema.org/').last
+    name = schema.value.split('schema.org/').last
     schema_id = get_schema_id(name)
 
     @analysis.schema_types.create!(name: name,
                                    schema_id: schema_id,
                                    fields: schema.parent.to_s,
                                    strategy: 'microdata')
+  rescue => e
   end
 
   def get_schema_id(name)
