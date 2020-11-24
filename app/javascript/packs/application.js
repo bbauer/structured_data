@@ -17,6 +17,10 @@ $(document).ready( function () {
   $('.dtable').DataTable();
 
   $(".toggle").on("click",function(){
-    $(this).prev().slideToggle();
+    $(this).parent().parent().find('.field-data').toggle();
   });
+
+  // $(".comment-expand").on("click",function(){
+  //  $(this).parent().parent().find('.schema-comment').toggle();
+  // });
 });

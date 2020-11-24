@@ -51,38 +51,54 @@
         <table class='table'>
           <tr>
             <th class='types'>Type</th>
+            <th class='expand'>Expand</th>
             <th class='fields'>Fields</th>
           </tr>
 
           <% @analysis.microdata_grouped.each do |group| %>
             <tr class='types'>
               <td>
-                <strong><%= group[0] %> <span class='badge badge-purple'><%= group[1].size %></span></strong>
+                <strong>
+                  <%= group[0] %>
+                  <span class='badge badge-purple'><%= group[1].size %></span>
+                </strong>
+
                 <% if group[1].first.schema.present? %>
-                  <p>
-                    <%= link_to("#{group[1].first.schema.url}", group[1].first.schema.url) %><br>
+                  <div class='schema-url'>
+                    <%= link_to("#{group[1].first.schema.url}", group[1].first.schema.url) %>
+                    <%#= fa_icon('info-circle', class: 'comment-expand') %>
+                  </div>
+
+                  <div class='schema-comment'>
                     <%= group[1].first.schema.comment.html_safe %>
-                  </p>
+                  </div>
                 <% end %>
               </td>
 
-              <td class='fields'>
-                <div class='code-sample'>
-                  <%= CodeRay.scan(group[1].first.pretty_fields, :html).div.html_safe %>
-                </div>
-
-                <div class='field-data'>
-                  <% group[1].each_with_index do |schema_type, i| %>
-                    <% unless i == 0 %>
-                      <div class='code-sample'>
-                        <%= CodeRay.scan(schema_type.pretty_fields, :html).div.html_safe %>
-                      </div>
-                    <% end %>
-                  <% end %>
-                </div>
-
+              <td class='expand'>
                 <div class='toggle'>
-                  <%= fa_icon('angle-double-down') %> View All
+                  <%= fa_icon('expand') %>
+                </div>
+              </td>
+
+              <td class='fields'>
+                <div class='microdata-code'>
+                  <div class='code-sample'>
+                    <%= CodeRay.scan(group[1].first.pretty_fields, :html).div.html_safe %>
+                  </div>
+
+                  <div class='field-data'>
+                    <% group[1].each_with_index do |schema_type, i| %>
+                      <% unless i == 0 %>
+                        <div class='code-sample'>
+                          <%= CodeRay.scan(schema_type.pretty_fields, :html).div.html_safe %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+
+                <div class='view-all'>
                 </div>
               </td>
             </tr>

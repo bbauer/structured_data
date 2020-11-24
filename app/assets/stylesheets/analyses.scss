@@ -16,8 +16,13 @@ table {
 }
 
 .fields {
+  width: 100%;
+
   div {
     max-width: 1000px;
+  }
+
+  .microdata-code {
   }
 }
 
@@ -35,12 +40,29 @@ table {
 .field-data {
   display: none;
 }
+.view-all {
+  text-align: center;
+}
+
+.schema-comment {
+  //display:none;
+}
+
+.schema-url {
+  i {
+    font-size: 20px;
+    color: #aaa;
+    cursor: pointer;
+  }
+}
+
 
 .toggle {
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 6px 10px 8px 12px;
+  border-radius:3px;
   margin-bottom: 12px;
   background-color: #f6f6f6;
+  border: 1px solid #eee;
   cursor: pointer;
   font-size: 15px;
   color:#222;
@@ -49,7 +71,7 @@ table {
 
   i {
     font-size:20px;
-    color: #bbb;
+    color: #444;
     top: 2px;
     position: relative;
     margin-right: 3px;
@@ -57,7 +79,7 @@ table {
 }
 
 .toggle:hover {
-  background-color: #e6e6e6;
+  background-color: #eee;
 
 }
 
